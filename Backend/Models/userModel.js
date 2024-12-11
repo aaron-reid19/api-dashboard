@@ -12,21 +12,21 @@ const Schema = mongoose.Schema;
 //defines the user schema
 const userSchema = new Schema({
     email: {
-        type: 'string',
+        type: String,
         required: true,
         unique: true
     },
     password: {
-        type: 'string',
+        type: String,
         required: true
     },
     fName:{
-        type: 'string',
-        required: true
+        type: String,
+        required:false
     },
     lName:{
-        type: 'string',
-        required: true
+        type: String,
+        required: false
     }
 })
 
@@ -34,7 +34,7 @@ const userSchema = new Schema({
 //static methods are called on the model itself, not an instance of the model
 userSchema.statics.signup = async function (email, password, fName, lName) {
     //check if a user has provided signup details
-    if (!email || !password || !fName || !lName) {
+    if (!email || !password ) {
         throw Error('all fields must be filled in');
     }
     // check if an email is valid
@@ -78,7 +78,7 @@ userSchema.statics.login = async function (email, password) {
     }
 
     //check if password is associated with user
-    const match = await bcrypt(password, user.password);
+    const match = await bcrypt.compare(password, user.password);
 
     //if password is not associated with user, throw an error
     if (!match) {
