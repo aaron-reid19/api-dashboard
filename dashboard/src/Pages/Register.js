@@ -1,7 +1,7 @@
-const Login = () => {
+const Register = () => {
     return ( 
         <div className="container">
-            <form className="login" onSubmit="">
+            <form className="login" action="">
         <label>Email:</label>
         <input type="email"
         //value={email}
@@ -11,6 +11,13 @@ const Login = () => {
          <input type="password"
          //value={password}
          />
+
+         <label>First Name:</label>
+         <input type="String"/>
+
+         <label>Last Name:</label>
+         <input type="String"/>
+
          <button>Login</button>
         </form>
         </div>
@@ -18,4 +25,4 @@ const Login = () => {
      );
 }
  
-export default Login;
+export default Register;
