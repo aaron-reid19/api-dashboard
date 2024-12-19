@@ -10,7 +10,7 @@ export const AuthContext = createContext()
 //it takes two arguments
 // state: the current context
 // and object containing a type
-export const AuthReducer = (state, action) => {
+export const authReducer = (state, action) => {
     //checks the type property of the action object to determin how to update the state.
     switch(action.type) {
         // if action type is login, updates the state with a new user object provided in the action.payload
@@ -30,7 +30,7 @@ export const AuthReducer = (state, action) => {
 
 export const AuthContextProvider = ({children}) => {
     // initializes the state using useReducer
-    const [state, dispatch ] = useReducer(AuthReducer, {
+    const [state, dispatch ] = useReducer(authReducer, {
         // { user: null }: the initial state, where user is null
         user: null
     })
